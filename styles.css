@@ -126,9 +126,9 @@ header h1 .heart { color: var(--accent); }
 .polaroid {
     width: min(320px, 90%);
     height: 380px; /* ajusta altura total (imagem + legenda) */
-    perspective: 1000px; /* 🔑 dá profundidade pro efeito 3D */
-    margin: auto;
-    cursor: pointer;
+    pegin: auto;
+    currspective: 1000px; /* 🔑 dá profundidade pro efeito 3D */
+    marsor: pointer;
 }
 
 .polaroid-inner {
@@ -470,6 +470,7 @@ footer a {
         gap: 12px;
         padding: 15px;
     }
+    
     
     .bubble {
         max-width: 70vw;
