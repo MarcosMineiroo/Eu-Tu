@@ -24,7 +24,7 @@ body {
     inset: 0;
     overflow: hidden;
     z-index: -2;
-    background: linear-gradient(45deg, #1a001a, #0d000d, #00001a);
+    background: linear-gradient(45deg, #962f96, #942094, #f5f5f5);
     perspective: 1000px;
 }
 
@@ -35,7 +35,7 @@ body {
     transition: transform 20s linear, opacity 8s ease;
     user-select: none;
     pointer-events: none;
-    text-shadow: 0 0 10px rgba(255, 77, 109, 0.2);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.719);
 }
 
 /* Posicionamento e animação para cada palavra */
@@ -122,31 +122,54 @@ header h1 .heart { color: var(--accent); }
 }
 
 /* ===== FOTO POLAROID ===== */
+/* ===== Polaroid com efeito flip ===== */
 .polaroid {
     width: min(320px, 90%);
-    background: white;
-    padding: 16px 16px 40px;
+    height: 380px; /* ajusta altura total (imagem + legenda) */
+    perspective: 1000px; /* 🔑 dá profundidade pro efeito 3D */
+    margin: auto;
+    cursor: pointer;
+}
+
+.polaroid-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d; /* 🔑 mantém frente e verso */
+}
+
+.polaroid:hover .polaroid-inner {
+    transform: rotateY(180deg); /* vira no eixo Y */
+}
+
+.polaroid-front,
+.polaroid-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     border-radius: 4px;
     box-shadow: var(--shadow);
-    transform: rotate(2deg);
-    transition: transform 0.3s ease;
-    animation: fadeIn 1s ease 0.6s both;
+    background: white;
+    padding: 16px 16px 40px;
+    backface-visibility: hidden; /* 🔑 esconde quando está de costas */
 }
 
-.polaroid:hover {
-    transform: rotate(0deg) scale(1.02);
-}
-
-.polaroid-img {
+/* Frente com a imagem */
+.polaroid-front .polaroid-img {
     width: 100%;
     height: 280px;
-    object-fit: cover;
-    background: #f0f0f0;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #888;
-    font-style: italic;
+}
+
+.polaroid-front .polaroid-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
 }
 
 .polaroid-caption {
@@ -155,22 +178,18 @@ header h1 .heart { color: var(--accent); }
     font-style: italic;
     font-weight: 500;
 }
-.polaroid-img {
-    width: 100%;
-    height: 280px;
-    background: #f0f0f0;
-    overflow: hidden; /* 🔑 garante que a imagem não "escape" da moldura */
+
+/* Verso com o texto */
+.polaroid-back {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #444;
+    transform: rotateY(180deg); /* verso já começa invertido */
 }
 
-.polaroid-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 🔑 faz a imagem "cortar" e se ajustar */
-    border-radius: 2px;
-}
 
 /* ===== BOTÃO DE MÚSICA ===== */
 .music-btn {
@@ -342,6 +361,21 @@ header h1 .heart { color: var(--accent); }
     opacity: .9;
     margin-top: 6px;
     padding: 10px;
+}
+
+/* Animação estilo esteira */
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%); /* metade, se duplicar os itens */
+    }
+}
+
+.gallery-track {
+    display: flex;
+    animation: marquee 20s linear infinite; /* quanto maior, mais suave/lento */
 }
 
 /* ===== GATINHO INTERATIVO ===== */

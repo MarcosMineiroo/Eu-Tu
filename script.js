@@ -15,6 +15,11 @@
             'fotos/IMG_5921.jpg',
             'fotos/IMG_7133.jpg',
             'fotos/Tezza-1863.JPG',
+            'fotos/WhatsApp Image 2025-08-20 at 14.53.18 (1).JPG',
+            'fotos/WhatsApp Image 2025-08-20 at 14.53.18.jpeg',
+            'fotos/WhatsApp Image 2025-08-20 at 14.53.19 (1).jpeg',
+            'fotos/WhatsApp Image 2025-08-20 at 14.53.19 (2).jpeg',
+            'fotos/WhatsApp Image 2025-08-20 at 14.53.19.jpeg'
 
         ];
         
@@ -103,10 +108,25 @@
                         left: scrollPos,
                         behavior: 'smooth' // animação suave
                     });
-                }, 3000); // muda a cada 4 segundos
-            } // intervalo em ms (quanto menor, mais suave)
-        
+                }, 1000); // muda a cada 4 segundos
+         } // intervalo em ms (quanto menor, mais suave)
+         let scrollPos = 0;
+        const speed = 1.0; // quanto maior, mais rápido (px por frame)
 
+        function step() {
+            scrollPos += speed;
+            if (scrollPos >= gallery.scrollWidth / 2) {
+                // volta pro início pra looping suave
+                scrollPos = 0;
+            }
+            gallery.scrollLeft = scrollPos;
+            requestAnimationFrame(step);
+        }
+
+        step();
+
+        
+        
         // =================== MODAL E MÚSICA ===================
         function initModal() {
             const modal = document.getElementById('modal');
@@ -145,18 +165,7 @@
                     audio.pause();
                 }
             });
-            function initGallery() {
-                const gallery = document.getElementById('gallery');
-                let index = 0;
-
-            
-
-                // Carrossel automático
-                setInterval(() => {
-                    index = (index + 1) % total;
-                    gallery.style.transform = `translateX(-${index * 100}%)`;
-                }, 4000); // muda a cada 4s
-            }
+          
 
             // Tecla ESC para fechar
             document.addEventListener('keydown', (e) => {
@@ -209,3 +218,5 @@
                 if (e.target.tagName === 'IMG') e.preventDefault();
             });
         });
+
+        
