@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz 2 Anos de Namoro</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ===== Background com Word Cloud ===== -->
+    <div class="word-cloud" id="wordCloud"></div>
+    <div class="bg-overlay" aria-hidden="true"></div>
+
+    <!-- ===== Conteúdo Principal ===== -->
+    <main class="container" role="main">
+        <header>
+            <h1>Feliz 2 anos de namoro, meu amor <span class="heart">❤️</span></h1>
+            <p>Cada dia ao seu lado é um novo capítulo da nossa história</p>
+        </header>
+
+       <figure class="polaroid">
+            <div class="polaroid-img">
+                <img src="fotos/classicu 2024-08-25 000452.809.JPG" alt="Nossa foto especial">
+            </div>
+            <figcaption class="polaroid-caption">Eu & Tu🫵🏽</figcaption>
+        </figure>
+
+        <!-- ===== Botão de música ===== -->
+        <button class="music-btn" id="musicBtn" aria-label="Abrir galeria com música">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z"></path>
+            </svg>
+        </button>
+    </main>
+
+    <!-- ===== Modal com Galeria ===== -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Nossas Memórias</h2>
+                <button class="close-modal" id="closeModal" aria-label="Fechar modal">✕</button>
+            </div>
+            
+            <div class="gallery-wrap">
+                <div class="gallery" id="gallery"></div>
+            </div>
+            
+            <p class="hint">Te amo em cada Detalhe✨</p>
+        </div>
+        
+        <audio id="audio" loop></audio>
+    </div>
+
+    <!-- ===== Gatinho interativo ===== -->
+    <div class="cat" id="cat" role="button" aria-label="Gatinho dizendo uma mensagem de amor" title="Miau!">
+        <div class="bubble">Eu também desejo muitos anos de amor pra vocês 💕</div>
+        <!-- Gato SVG -->
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="100" cy="120" rx="60" ry="50" fill="#222"/>
+            <circle cx="100" cy="80" r="38" fill="#222"/>
+            <polygon points="70,62 56,30 86,52" fill="#222"/>
+            <polygon points="130,62 144,30 114,52" fill="#222"/>
+            <ellipse class="blink" cx="86" cy="80" rx="6" ry="6" fill="#fff"/>
+            <ellipse class="blink" cx="114" cy="80" rx="6" ry="6" fill="#fff"/>
+            <circle cx="86" cy="80" r="2" fill="#111"/>
+            <circle cx="114" cy="80" r="2" fill="#111"/>
+            <circle cx="100" cy="90" r="3" fill="#ff7a90"/>
+            <g stroke="#ddd" stroke-width="2" stroke-linecap="round">
+                <line x1="70" y1="90" x2="90" y2="95"/>
+                <line x1="70" y1="96" x2="90" y2="98"/>
+                <line x1="130" y1="90" x2="110" y2="95"/>
+                <line x1="130" y1="96" x2="110" y2="98"/>
+            </g>
+            <circle cx="142" cy="140" r="12" fill="#222">
+                <animate attributeName="cy" values="138;142;138" dur="2.2s" repeatCount="indefinite"/>
+            </circle>
+            <path d="M155 135 Q175 130 170 110 Q165 95 180 90" fill="none" stroke="#222" stroke-width="12" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <footer>
+        Feito com <span style="color: var(--accent)">❤️</span> para você
+    </footer>
+
+
+</body>
+<script src="script.js"></script>
+
+</html>
